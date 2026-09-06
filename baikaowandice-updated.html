@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ff72a5" />
+    <title>11 เดือนของเรา ♡</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root { --pink:#ff5f9a; --pink-dark:#e5447f; --rose:#ffe1ec; --cream:#fffaf5; --ink:#6f3150; --yellow:#ffd76b; }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin:0; color:var(--ink); background: radial-gradient(circle at 14% 4%,#fff 0 6%,transparent 25%),linear-gradient(150deg,#fff0f5,#fffaf2 48%,#ffe8f0); font-family:"Noto Sans Thai",sans-serif; overflow-x:hidden; }
+      .sparkles { position:fixed; inset:0; pointer-events:none; z-index:-1; overflow:hidden; }
+      .sparkle { position:absolute; color:#ff9cbd; opacity:.55; animation: drift 8s ease-in-out infinite; }
+      @keyframes drift { 50% { transform:translateY(-22px) rotate(18deg); opacity:.9; } }
+      .wrap { width:min(1100px,92%); margin:auto; }
+      nav { display:flex; justify-content:space-between; align-items:center; padding:22px 0; font-family:Mali,sans-serif; font-weight:700; }
+      .brand { font-size:1.25rem; text-decoration:none; color:var(--pink-dark); }
+      .nav-btn { border:0; background:#fff; color:var(--pink-dark); border-radius:999px; padding:10px 17px; font:600 .85rem "Noto Sans Thai"; box-shadow:0 7px 18px #e975a229; cursor:pointer; }
+      .hero { min-height:76vh; display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:30px; padding:35px 0 70px; }
+      .eyebrow { display:inline-block; padding:7px 13px; border-radius:999px; background:#fff; color:var(--pink-dark); font-weight:700; font-size:.82rem; box-shadow:0 6px 17px #df5d8d1a; }
+      h1,h2,h3 { font-family:Mali,"Noto Sans Thai",sans-serif; margin:0; line-height:1.28; }
+      h1 { font-size:clamp(3rem,7vw,6rem); letter-spacing:-.06em; margin:15px 0 12px; color:#e74781; }
+      h1 span { color:#ff9abf; }
+      .hero p { max-width:540px; font-size:1.07rem; line-height:1.9; margin:0 0 25px; }
+      .hero-actions { display:flex; gap:11px; flex-wrap:wrap; }
+      .button { display:inline-flex; align-items:center; justify-content:center; gap:7px; border:0; padding:13px 19px; border-radius:999px; cursor:pointer; text-decoration:none; font:700 .95rem "Noto Sans Thai"; transition:.2s transform,.2s box-shadow; }
+      .button:hover { transform:translateY(-3px); }
+      .button.primary { color:#fff; background:linear-gradient(135deg,#ff669e,#ed4c89); box-shadow:0 10px 20px #eb4c863d; }
+      .button.ghost { color:var(--pink-dark); background:#fff; box-shadow:0 8px 20px #de629228; }
+      .hero-art { position:relative; min-height:410px; display:grid; place-items:center; }
+      .photo-card { width:min(330px,80vw); aspect-ratio: .8; border:10px solid #fff; border-bottom-width:42px; background:linear-gradient(135deg,#ffd0df,#ffeff5); border-radius:8px; box-shadow:14px 17px 0 #ffb6cf7d,0 20px 35px #c64d7a2d; transform:rotate(4deg); display:grid; place-items:center; text-align:center; position:relative; overflow:hidden; }
+      .photo-card::after { content:"♡"; position:absolute; z-index:1; font:140px/1 Mali; color:#fff8; transform:rotate(-15deg); pointer-events:none; }
+      .photo-card img { width:100%; height:100%; object-fit:cover; }
+      .tape { position:absolute; width:112px; height:28px; background:#fff7b7c9; transform:rotate(-4deg); top:14px; left:calc(50% - 56px); z-index:2; }
+      .orbit { position:absolute; background:#fff; border-radius:50%; display:grid; place-items:center; box-shadow:0 10px 20px #df729331; animation:bob 3.5s ease-in-out infinite; }
+      .orbit.one { width:78px;height:78px; top:10%;right:4%; font-size:2.1rem; }
+      .orbit.two { width:64px;height:64px; bottom:13%;left:2%; font-size:1.7rem; animation-delay:-1s; }
+      .orbit.three { width:50px;height:50px; bottom:4%;right:10%; font-size:1.3rem; animation-delay:-2s; }
+      @keyframes bob { 50% { transform:translateY(-12px) rotate(6deg); } }
+      section { padding:72px 0; }
+      .section-head { text-align:center; margin-bottom:32px; }
+      .section-head h2 { font-size:clamp(1.9rem,4vw,3rem); color:#df3f7c; }
+      .section-head p { margin:7px 0 0; color:#a85d78; }
+      .timer-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+      .stat { padding:22px 10px; background:#fff; border-radius:24px; text-align:center; box-shadow:0 11px 26px #c65c8021; border:1px solid #ffe6ee; }
+      .stat strong { display:block; font:700 clamp(1.7rem,4vw,2.7rem) Mali; color:#ee4a86; }
+      .stat span { color:#ad6680; font-size:.87rem; }
+      .letter { max-width:790px; margin:auto; background:linear-gradient(135deg,#fffdf8,#fff6fa); border:1px solid #ffe0e9; padding:clamp(24px,6vw,56px); border-radius:30px; position:relative; box-shadow:0 18px 40px #c86a8720; }
+      .letter:before { content:"💌"; position:absolute; right:24px; top:-22px; font-size:48px; transform:rotate(12deg); }
+      .letter p { font-size:1.05rem; line-height:2; margin:0 0 17px; }
+      .signature { margin-top:26px!important; font-family:Mali; font-weight:700; color:#de3f7d; font-size:1.22rem!important; }
+      .favorites { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+      .favorite { padding:26px 22px; border-radius:25px; background:#fff; box-shadow:0 12px 28px #c65c8020; text-align:center; transition:.2s; }
+      .favorite:hover { transform:translateY(-6px) rotate(-1deg); }
+      .favorite .emoji { display:block; font-size:2.8rem; margin-bottom:10px; }
+      .favorite h3 { font-size:1.25rem; color:#df3f7c; }
+      .favorite p { margin:7px 0 0; font-size:.92rem; color:#a8667e; }
+      .game { display:grid; grid-template-columns:.8fr 1.2fr; gap:26px; align-items:center; background:linear-gradient(115deg,#ff79aa,#f04e89); border-radius:31px; padding:clamp(25px,5vw,48px); color:#fff; box-shadow:0 20px 39px #dc428958; }
+      .game h2 { font-size:clamp(1.8rem,4vw,2.8rem); }
+      .game p { line-height:1.75; }
+      .heart-field { min-height:240px; border:2px dashed #ffffff8a; border-radius:22px; position:relative; overflow:hidden; background:#ffffff13; }
+      .heart { position:absolute; border:0; background:transparent; font-size:2.1rem; cursor:pointer; transition:transform .12s; padding:4px; animation:pop .3s both; }
+      .heart:hover { transform:scale(1.25); }
+      @keyframes pop { from{transform:scale(0)} to{transform:scale(1)} }
+      .score { font:700 1.2rem Mali; }
+      .wish { text-align:center; }
+      .wish-box { max-width:650px; margin:20px auto 0; background:#fff; padding:26px; border-radius:26px; box-shadow:0 12px 28px #c65c8020; }
+      textarea { width:100%; min-height:96px; resize:vertical; border:1px solid #ffd4e2; border-radius:15px; padding:13px; font:1rem "Noto Sans Thai"; color:var(--ink); outline-color:#ff7cac; }
+      .wish-box .button { margin-top:13px; }
+      #wishResult { min-height:1.3em; margin:13px 0 0; font-weight:600; color:#d83b78; }
+      .mini-games { display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:stretch; }
+      .mini-card { background:#fff; border-radius:30px; padding:clamp(20px,4vw,34px); box-shadow:0 13px 30px #c65c8020; overflow:hidden; position:relative; }
+      .mini-card h3 { color:#df3f7c; font-size:1.55rem; }
+      .wheel-games { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+      .mini-card > p { color:#a8667e; margin:7px 0 16px; font-size:.93rem; }
+      .flower-picks { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:13px; }
+      .flower-pick { border:1px solid #ffd5e3; border-radius:999px; background:#fff8fa; padding:7px 10px; cursor:pointer; font:600 .83rem "Noto Sans Thai"; color:#c94778; }
+      .flower-pick.active { background:#ff6ca1; color:#fff; border-color:#ff6ca1; }
+      .garden { display:grid; grid-template-columns:repeat(5,1fr); gap:7px; background:linear-gradient(135deg,#c9ecb7,#a9d88e); padding:12px; border-radius:20px; min-height:238px; position:relative; }
+      .garden::before { content:""; position:absolute; inset:0; opacity:.17; background-image:radial-gradient(#fff 1px,transparent 1px); background-size:14px 14px; pointer-events:none; }
+      .plot { z-index:1; display:grid; place-items:center; min-height:38px; background:#a86d42; border:0; border-radius:50% 50% 44% 44%; cursor:pointer; font-size:1.6rem; box-shadow:inset 0 -4px #85512e; transition:transform .15s; }
+      .plot:hover { transform:scale(1.12); }
+      .garden-note { margin:12px 0 0; min-height:1.35em; font-weight:600; color:#d8427e; font-size:.92rem; }
+      .wheel-wrap { display:grid; place-items:center; position:relative; min-height:256px; }
+      .wheel-pointer { position:absolute; top:0; z-index:3; color:#e2437d; font-size:32px; transform:rotate(180deg); text-shadow:0 2px #fff; }
+      .wheel { width:224px; aspect-ratio:1; border:7px solid #fff; border-radius:50%; background:conic-gradient(#ff86ae 0 60deg,#ffd16e 60deg 120deg,#aee1cd 120deg 180deg,#bda8eb 180deg 240deg,#ffb699 240deg 300deg,#ffdf8b 300deg); box-shadow:0 8px 20px #c65c8040; display:grid; place-items:center; transition:transform 3.2s cubic-bezier(.15,.75,.08,1); }
+      .wheel-center { width:70px; aspect-ratio:1; border-radius:50%; display:grid; place-items:center; text-align:center; background:#fffdfb; color:#dd3e7a; font:700 .65rem Mali; padding:7px; box-shadow:0 2px 8px #b0507030; }
+      .date-result { min-height:2.7em; margin:10px 0 0; color:#d8427e; text-align:center; font-weight:700; }
+      .date-actions { text-align:center; margin-top:5px; }
+      .photo-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:19px; }
+      .photo-slot { appearance:none; border:0; aspect-ratio:.82; padding:9px 9px 34px; border-radius:5px; background:#fff; box-shadow:0 12px 24px #c65c8025; transform:rotate(-2deg); cursor:pointer; position:relative; overflow:hidden; transition:transform .2s,box-shadow .2s; }
+      .photo-slot:hover { transform:translateY(-6px) rotate(0deg) scale(1.02); box-shadow:0 18px 30px #c65c8036; }
+      .photo-slot:nth-child(3n+2) { transform:rotate(3deg); background:#fffdf7; }
+      .photo-slot:nth-child(3n) { transform:rotate(-1deg); }
+      .photo-slot img { width:100%; height:100%; display:block; object-fit:cover; border-radius:2px; }
+      .photo-slot span { position:absolute; bottom:9px; left:0; right:0; color:#df5a8c; font:700 .78rem Mali; }
+      footer { text-align:center; padding:42px 20px 50px; color:#a8657d; font-size:.9rem; }
+      .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:#70213b71; z-index:10; padding:20px; }
+      .modal.show { display:flex; }
+      .modal-card { max-width:430px; width:100%; background:#fffafd; border-radius:30px; padding:36px 26px; text-align:center; box-shadow:0 25px 60px #4b102860; animation:pop .25s ease-out; }
+      .modal-card div { font-size:3rem; }
+      .modal-card h2 { color:#e53f7c; margin:8px 0; }
+      .lightbox { position:fixed; inset:0; z-index:30; display:none; align-items:center; justify-content:center; flex-direction:column; gap:10px; padding:25px; background:#39101fdf; }
+      .lightbox.show { display:flex; }
+      .lightbox img { max-width:min(92vw,780px); max-height:78vh; object-fit:contain; border:7px solid #fff; border-radius:7px; box-shadow:0 20px 60px #0008; }
+      .lightbox p { margin:0; color:#fff; font:700 1rem Mali; }
+      .lightbox button { position:absolute; right:20px; top:17px; border:0; width:42px; height:42px; border-radius:50%; background:#fff; color:#dc3f7b; cursor:pointer; font:700 1.7rem/1 Arial; }
+      @media (max-width:720px) { .hero,.game,.mini-games { grid-template-columns:1fr; } .hero { text-align:center; padding-top:20px; } .hero p { margin-inline:auto; } .hero-actions { justify-content:center; } .hero-art { min-height:350px; order:-1; } .timer-grid { grid-template-columns:repeat(2,1fr); } .favorites,.photo-gallery { grid-template-columns:1fr; } .photo-slot { max-width:275px; width:100%; margin:auto; } nav .nav-btn { padding:8px 12px; } }
+      @media (max-width:900px) { .wheel-games { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="sparkles" aria-hidden="true"><i class="sparkle" style="left:8%;top:18%;font-size:28px">✦</i><i class="sparkle" style="left:90%;top:19%;font-size:22px;animation-delay:-2s">♡</i><i class="sparkle" style="left:72%;top:73%;font-size:32px;animation-delay:-5s">✦</i><i class="sparkle" style="left:15%;top:78%;font-size:24px;animation-delay:-3s">♡</i></div>
+    <div class="wrap">
+      <nav><a class="brand" href="#top">Biakaow ♡ Ice</a><button class="nav-btn" id="surpriseBtn">กดรับเซอร์ไพรส์ 🎁</button></nav>
+      <main id="top">
+        <section class="hero">
+          <div>
+            <span class="eyebrow">6 กันยายน • ครบรอบ 11 เดือน</span>
+            <h1>สิบเอ็ดเดือน<br><span>ของเรา</span> ♡</h1>
+            <p>ถึงใบข้าว คนที่ยังน่ารัก สดใส และทำให้ทุกวันของเค้าพิเศษเสมอ ขอบคุณที่เราได้เดินมาด้วยกันนะครับ</p>
+            <div class="hero-actions"><a class="button primary" href="#letter">อ่านจดหมายของเค้า 💌</a><a class="button ghost" href="#game">เล่นเกมหัวใจ</a></div>
+          </div>
+          <div class="hero-art">
+            <div class="photo-card"><span class="tape"></span><img src="assets/IMG_1258.jpg" alt="ใบข้าวคนเก่งของไอซ์" /></div>
+            <div class="orbit one">🌸</div><div class="orbit two">🍓</div><div class="orbit three">💗</div>
+          </div>
+        </section>
+        <section id="time">
+          <div class="section-head"><h2>เราอยู่ด้วยกันมานานแค่ไหนแล้วนะ</h2><p>จาก 11 เดือนเล็ก ๆ กลายเป็นเวลาที่มีความหมายมาก ๆ</p></div>
+          <div class="timer-grid"><div class="stat"><strong>11</strong><span>เดือน</span></div><div class="stat"><strong>335</strong><span>วัน</span></div><div class="stat"><strong>8,040</strong><span>ชั่วโมง</span></div><div class="stat"><strong>28,944,000</strong><span>วินาที</span></div></div>
+        </section>
+        <section id="letter">
+          <div class="section-head"><h2>จดหมายครบรอบ 11 เดือน</h2><p>ของน้องใบข้าว</p></div>
+          <article class="letter">
+            <p>เย้ ๆ ๆ ครบรอบ 11 เดือนแล้วน้า ขอบคุณที่เราอยู่ด้วยกันมาตั้ง 11 เดือนแนะ เธอยังน่ารักและสดใสเหมือนวันแรก ๆ อยู่เลยย เค้ารักเธออมาก ๆ น้าา และความรักที่เค้ามีให้เธอก็เย้ออขึ้นด้วยย ๆ ๆ</p>
+            <p>ถึงเค้าจาบอกว่าวันครบรอบเค้าเฉย ๆ เพราะว่าอยากให้ทุกวันเป็นวันพิเศษ แต่ครบรอบ 11 เดือนครั้งนี้มันพิเศษมากก ๆ ๆ เค้าเลยอยากให้วันนี้เป็นวันพิเศษด้วยย เพราะเราอยู่ด้วยกันมาตั้ง 335 วันแล้วน้าา ถ้าแปลงเป็นชั่วโมงก็คือ 8,040 ชั่วโมง โอโหห เยอะมาก ๆ ถ้าแปลงเป็นนาที 482,400 นาที และถ้าแปลงเป็นวินาทีจะได้ 28,944,000 วินาทีเลยย</p>
+            <p>เธอจะเห็นว่าเราอยู่ด้วยกันมานานนมากกเลยยน้า ขอบคุณเธอที่ยังอยู่ด้วยกันแบบนี้น้าา เราจะรักเธอในทุก ๆ วันที่เรายังมีกันและกันน้าจุ๊บ ๆ ๆ ขอบคุณที่เรายังคอยปรับเข้าหากันละกัน ไม่ปายยหนาย ละขอโทษกับบางเรื่องง ที่เค้าทำตัวไม่ดีใส่เธออนะครับ รักเธอนะค้าบบ</p>
+            <p class="signature">รักใบข้าวที่สุด<br>จาก ไอซ์<br><small>นายประปฐมสิทธิ อัตถ์ภาคนนท์</small></p>
+          </article>
+        </section>
+        <section>
+          <div class="section-head"><h2>เรื่องน่ารัก ๆ ของใบข้าว</h2><p>นางสาวฐิติรัตน์ พรหมจันทร์ • เกิด 14 กันยายน 2551</p></div>
+          <div class="favorites"><article class="favorite"><span class="emoji">🍳</span><h3>เมนูโปรด</h3><p>ข้าวกระเพรา อร่อยที่สุดด</p></article><article class="favorite"><span class="emoji">🍓</span><h3>ขนมโปรด</h3><p>สตรอเบอร์รี่โยเกิร์ต</p></article><article class="favorite"><span class="emoji">🎀</span><h3>สีโปรด</h3><p>สีชมพู เพราะน่ารักเหมือนเจ้าตัว</p></article></div>
+        </section>
+        <section id="game">
+          <div class="game"><div><h2>เก็บหัวใจของเค้าไปเลย 💖</h2><p>เกมสั้น ๆ สำหรับคนที่ไม่ต้องเล่นเกมนาน เพราะเดี๋ยวจะติดเกมง่ายยย กดเก็บหัวใจให้ทันภายใน 15 วินาที!</p><div class="score" id="score">หัวใจที่เก็บได้: 0</div><button class="button ghost" id="startGame">เริ่มเล่นเลย</button></div><div class="heart-field" id="heartField"><div style="position:absolute;inset:0;display:grid;place-items:center;color:#fff;font:700 1.2rem Mali;opacity:.9" id="gamePrompt">พร้อมรึยังง? ♡</div></div></div>
+        </section>
+        <section id="more-games">
+          <div class="section-head"><h2>มินิเกมของใบข้าวกับไอซ์</h2><p>เล่นเพลิน ๆ แล้วเก็บไว้เป็นไอเดียเดตของเรากันน้าา</p></div>
+          <div class="mini-games">
+            <article class="mini-card"><h3>จัดสวนดอกไม้ของเรา 🌷</h3><p>เลือกดอกไม้ที่ชอบ แล้วแตะบนแปลงดินให้สวนของเราบานสะพรั่ง!</p><div class="flower-picks"><button class="flower-pick active" data-flower="🌷">ทิวลิป</button><button class="flower-pick" data-flower="🌸">ซากุระ</button><button class="flower-pick" data-flower="🌻">ทานตะวัน</button><button class="flower-pick" data-flower="🌹">กุหลาบ</button></div><div class="garden" id="garden" aria-label="สวนดอกไม้"></div><p class="garden-note" id="gardenNote">ปลูกดอกแรกให้สวนของเรากันเลยย</p></article>
+            <article class="mini-card"><h3>วงล้อเดตกับไอซ์ 🎡</h3><p>ให้วงล้อเลือกสถานที่นัดเดตครั้งต่อไปของเราสิ!</p><div class="wheel-wrap"><div class="wheel-pointer">▼</div><div class="wheel" id="wheel"><div class="wheel-center">เดต<br>กันนะ!</div></div></div><div class="date-actions"><button class="button primary" id="spinWheel">หมุนวงล้อ ✨</button></div><p class="date-result" id="dateResult">กดหมุน แล้วมาดูกันว่าเราจะไปไหนน้าา</p></article>
+          </div>
+        </section>
+        <section id="wheels">
+          <div class="section-head"><h2>วงล้อสุ่มของเรา 🎠</h2><p>หมุนเลือกที่เที่ยว ของกิน หรือกิจกรรมสนุก ๆ ได้เลย</p></div>
+          <div class="wheel-games">
+            <article class="mini-card"><h3>ไปไหนดีน้า 🗺️</h3><div class="wheel-wrap"><div class="wheel-pointer">▼</div><div class="wheel" id="tripWheel"><div class="wheel-center">ไป<br>ไหน?</div></div></div><div class="date-actions"><button class="button primary" id="spinTrip">สุ่มที่เที่ยว</button></div><p class="date-result" id="tripResult">กดเลย แล้วออกเดตกัน ♡</p></article>
+            <article class="mini-card"><h3>กินอะไรดี 🍽️</h3><div class="wheel-wrap"><div class="wheel-pointer">▼</div><div class="wheel" id="foodWheel"><div class="wheel-center">กิน<br>อะไร?</div></div></div><div class="date-actions"><button class="button primary" id="spinFood">สุ่มอาหาร</button></div><p class="date-result" id="foodResult">มื้อนี้ให้วงล้อเลือก!</p></article>
+            <article class="mini-card"><h3>ทำอะไรสนุก ๆ ✨</h3><div class="wheel-wrap"><div class="wheel-pointer">▼</div><div class="wheel" id="activityWheel"><div class="wheel-center">ทำ<br>อะไร?</div></div></div><div class="date-actions"><button class="button primary" id="spinActivity">สุ่มกิจกรรม</button></div><p class="date-result" id="activityResult">พร้อมสร้างโมเมนต์ใหม่แล้วว</p></article>
+          </div>
+        </section>
+        <section id="photos"><div class="section-head"><h2>อัลบั้มรูปของเรา</h2><p>โมเมนต์น่ารัก ๆ ของใบข้าวกับไอซ์ — กดรูปเพื่อดูรูปใหญ่ได้เลย ♡</p></div><div class="photo-gallery" id="photoGallery"></div></section>
+        <section class="wish"><div class="section-head"><h2>ฝากข้อความถึงเรา</h2><p>พิมพ์คำตอบรับน่ารัก ๆ แล้วกดส่งให้หัวใจลอยได้เลย</p></div><div class="wish-box"><textarea id="wishText" placeholder="เช่น รักไอซ์เหมือนกันน้าา ♡"></textarea><br><button class="button primary" id="sendWish">ส่งด้วยหัวใจ</button><p id="wishResult"></p></div></section>
+      </main>
+    </div>
+    <footer>สร้างด้วยความรักโดยไอซ์ • สำหรับใบข้าวคนเดียวเท่านั้น ♡</footer>
+    <div class="modal" id="modal"><div class="modal-card"><div>🎁</div><h2>เซอร์ไพรส์!</h2><p>ขอให้เดือนที่ 11 ของเรา น่ารักที่สุด และขอให้มีอีกหลาย ๆ เดือนต่อจากนี้นะครับ</p><button class="button primary" id="closeModal">รับไว้เลยย ♡</button></div></div>
+    <div class="lightbox" id="lightbox" aria-hidden="true"><button id="closeLightbox" aria-label="ปิดรูปใหญ่">×</button><img id="lightboxImage" alt="" /><p id="lightboxCaption"></p></div>
+    <script>
+      const modal = document.querySelector('#modal');
+      document.querySelector('#surpriseBtn').onclick = () => modal.classList.add('show');
+      document.querySelector('#closeModal').onclick = () => modal.classList.remove('show');
+      modal.onclick = e => { if (e.target === modal) modal.classList.remove('show'); };
+      const field = document.querySelector('#heartField'), scoreEl = document.querySelector('#score'), prompt = document.querySelector('#gamePrompt');
+      let score=0, playing=false, timer;
+      function addHeart(){ if(!playing) return; const h=document.createElement('button'); h.className='heart'; h.textContent=['💗','💖','💕','💓'][Math.floor(Math.random()*4)]; h.style.left=Math.random()*82+5+'%'; h.style.top=Math.random()*75+7+'%'; h.onclick=()=>{ score++; scoreEl.textContent='หัวใจที่เก็บได้: '+score; h.remove(); addHeart(); }; field.append(h); setTimeout(()=>{h.remove();},1200); }
+      document.querySelector('#startGame').onclick=()=>{ if(playing) return; playing=true; score=0; scoreEl.textContent='หัวใจที่เก็บได้: 0'; prompt.style.display='none'; for(let i=0;i<4;i++) setTimeout(addHeart,i*300); timer=setInterval(addHeart,650); setTimeout(()=>{playing=false;clearInterval(timer);field.querySelectorAll('.heart').forEach(h=>h.remove());prompt.textContent='เก่งมากก! เก็บได้ '+score+' หัวใจ ♡';prompt.style.display='grid';},15000); };
+      const garden=document.querySelector('#garden'), gardenNote=document.querySelector('#gardenNote'); let flower='🌷', planted=0;
+      for(let i=0;i<20;i++){ const plot=document.createElement('button'); plot.className='plot'; plot.setAttribute('aria-label','แปลงดอกไม้'); plot.onclick=()=>{ if(!plot.textContent){ plot.textContent=flower; planted++; gardenNote.textContent=planted<12 ? 'สวนของเรามี '+planted+' ดอกแล้วน้าา 🌿' : 'สวนของเราบานเต็มเลยย! ใบข้าวเก่งที่สุด 💗'; } else { plot.textContent=flower; } }; garden.append(plot); }
+      document.querySelectorAll('.flower-pick').forEach(btn=>btn.onclick=()=>{ document.querySelectorAll('.flower-pick').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); flower=btn.dataset.flower; gardenNote.textContent='เลือก '+btn.textContent+' แล้ว ลองปลูกเลยย'; });
+      const dates=['คาเฟ่แมว 🐈','ฮาร์เบอร์แลนด์ 🛝','อควาเรียม 🐠','สวนสาธารณะปิกนิก 🌳','พิพิธภัณฑ์ศิลปะ 🎨','ตลาดกลางคืน 🌙','ดูหนังโรง 🍿','คาราโอเกะ 🎤','โบว์ลิ่ง 🎳','สเก็ตน้ำแข็ง ⛸️','สวนสัตว์ 🦁','สวนสนุก 🎢','ห้องสมุดน่ารัก ๆ 📚','เดินถ่ายรูปย่านเก่า 📷','คาเฟ่บอร์ดเกม 🎲','ชายหาดตอนเย็น 🌊','ดูดาวท้องฟ้าจำลอง 🌌','เวิร์กช็อปปั้นดิน 🏺','ร้านหนังสือ ☕','คอนเสิร์ตเล็ก ๆ 🎶']; let spinning=false, wheelAngle=0;
+      document.querySelector('#spinWheel').onclick=()=>{ if(spinning) return; spinning=true; const selected=Math.floor(Math.random()*dates.length); wheelAngle+=1440+(6-selected)*60; document.querySelector('#wheel').style.transform='rotate('+wheelAngle+'deg)'; document.querySelector('#dateResult').textContent='กำลังเลือกเดตที่น่ารักที่สุด...'; setTimeout(()=>{document.querySelector('#dateResult').textContent='เดตครั้งหน้า: '+dates[selected]+' กับไอซ์นะครับ ♡';spinning=false;},3250); };
+      const food=['ชาบู 🍲','หมูกระทะ 🥓','ซูชิ 🍣','ราเมง 🍜','พิซซ่า 🍕','กะเพราไข่ดาว 🍳','ไก่ทอดเกาหลี 🍗','ส้มตำ 🌶️','ก๋วยเตี๋ยวเรือ 🍜','ข้าวมันไก่ 🍚','สเต๊ก 🥩','พาสต้า 🍝','ต๊อกบกกี 🥘','เบอร์เกอร์ 🍔','ขนมจีน 🍛','ข้าวแกง 🍱','โยเกิร์ตสตรอเบอร์รี่ 🍓','บิงซู 🍧','เครป 🥞','ชาไข่มุก 🧋'];
+      const activities=['ถ่ายรูปคู่ตามโจทย์ 10 รูป 📸','แข่งกันเลือกขนมให้อีกคน 🍰','ทำเพลย์ลิสต์ให้กัน 🎧','เขียนจดหมายสั้น ๆ 💌','แข่งวาดรูปกัน 5 นาที 🎨','เล่นบอร์ดเกม 🎲','ทำอาหารด้วยกัน 👩‍🍳','ตามล่าของสีเดียวกัน 🔍','ทำกล่องความทรงจำ 📦','ถ่ายตู้สติกเกอร์ 📷','เลือกหนังให้กันดู 🎬','เดินจับมือ 30 นาที 🚶','เล่นเกมตอบคำถามแฟน 💞','ลองเมนูที่ไม่เคยกิน 😋','ทำขนมด้วยกัน 🧁','ตั้งเป้าหมายเดือนหน้า 🗓️','ดูพระอาทิตย์ตก 🌅','ร้องเพลงคู่ 🎤','เลือกของขวัญงบ 100 บาท 🎁','นวดไหล่ให้กัน 10 นาที 💆'];
+      function makeWheel(buttonId,wheelId,resultId,items,label){let angle=0,busy=false;document.querySelector('#'+buttonId).onclick=()=>{if(busy)return;busy=true;const pick=items[Math.floor(Math.random()*items.length)];angle+=1440+Math.floor(Math.random()*360);document.querySelector('#'+wheelId).style.transform='rotate('+angle+'deg)';document.querySelector('#'+resultId).textContent='กำลังสุ่ม...';setTimeout(()=>{document.querySelector('#'+resultId).textContent=label+pick+' ♡';busy=false;},3250);};}
+      makeWheel('spinTrip','tripWheel','tripResult',dates,'เดตครั้งหน้า: '); makeWheel('spinFood','foodWheel','foodResult',food,'วันนี้กิน: '); makeWheel('spinActivity','activityWheel','activityResult',activities,'วันนี้เรามา: ');
+      const sheetEndpoint='https://script.google.com/macros/s/AKfycbwas5a3KbS5I6RMvOdoi4eUOIbrbP_X-P7WLbPJJ7R4YXGIIgK5Vazpnc4z_h9of1Rv/exec';
+      const sheetKey='biakaow-ice-11m-2026';
+      document.querySelector('#sendWish').onclick=()=>{ const text=document.querySelector('#wishText').value.trim(); const result=document.querySelector('#wishResult'); if(!text) { result.textContent='พิมพ์ข้อความน่ารัก ๆ ให้เค้าก่อนน้าา'; return; } result.textContent='เค้ารับข้อความแล้วน้าา และเก็บไว้ในอัลบั้มของเราแล้ว 💗'; fetch(sheetEndpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({key:sheetKey,message:text})}).catch(()=>{ result.textContent='ข้อความน่ารักมากก ลองส่งอีกครั้งเมื่อมีอินเทอร์เน็ตน้าา'; }); for(let i=0;i<18;i++) setTimeout(()=>{ const s=document.createElement('span');s.textContent='💗';s.style.cssText='position:fixed;left:'+(Math.random()*90+5)+'vw;top:105vh;z-index:20;font-size:24px;animation:float 2s ease-out forwards';document.body.append(s);setTimeout(()=>s.remove(),2100);},i*50); };
+      const photoFiles=['IMG_9989.jpg','IMG_3431.jpg','IMG_0319.jpg','IMG_0320.jpg','IMG_0321.jpg','IMG_0323.jpg','IMG_0324.jpg','IMG_0325.jpg','IMG_0327.jpg','IMG_0328.jpg','IMG_0332.jpg','IMG_0336.jpg','IMG_0599.jpg','IMG_0600.jpg','IMG_0605.jpg','IMG_0606.jpg','IMG_0629.jpg','IMG_0630.jpg','IMG_0631.jpg','IMG_0632.jpg','IMG_0633.jpg','IMG_0634.jpg','IMG_0635.jpg','IMG_0636.jpg','IMG_1255.jpg','IMG_1258.jpg','IMG_1260.jpg','IMG_1266.jpg','IMG_1276.jpg','IMG_1277.jpg','IMG_1282.jpg','IMG_1283.jpg','IMG_1284.jpg','IMG_1285.jpg','IMG_1286.jpg','IMG_3306.jpg','IMG_3307.jpg','IMG_3463.jpg','IMG_3464.jpg'];
+      const photoGallery=document.querySelector('#photoGallery'), lightbox=document.querySelector('#lightbox'), lightboxImage=document.querySelector('#lightboxImage'), lightboxCaption=document.querySelector('#lightboxCaption');
+      photoFiles.forEach((file,index)=>{ const card=document.createElement('button'); card.className='photo-slot'; card.innerHTML='<img loading="lazy" src="assets/'+file+'" alt="ความทรงจำของใบข้าวกับไอซ์ รูปที่ '+(index+1)+'"><span>ความทรงจำที่ '+(index+1)+' ♡</span>'; card.onclick=()=>{ lightboxImage.src='assets/'+file; lightboxImage.alt='ความทรงจำของใบข้าวกับไอซ์ รูปที่ '+(index+1); lightboxCaption.textContent='ความทรงจำที่ '+(index+1)+' ของเรา ♡'; lightbox.classList.add('show'); lightbox.setAttribute('aria-hidden','false'); }; photoGallery.append(card); });
+      const closeLightbox=()=>{ lightbox.classList.remove('show'); lightbox.setAttribute('aria-hidden','true'); };
+      document.querySelector('#closeLightbox').onclick=closeLightbox; lightbox.onclick=e=>{if(e.target===lightbox) closeLightbox();}; document.addEventListener('keydown',e=>{if(e.key==='Escape') closeLightbox();});
+      const style=document.createElement('style'); style.textContent='@keyframes float{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}';document.head.append(style);
+    </script>
+  </body>
+</html>
