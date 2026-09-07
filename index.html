@@ -45,7 +45,7 @@
       .section-head { text-align:center; margin-bottom:32px; }
       .section-head h2 { font-size:clamp(1.9rem,4vw,3rem); color:#df3f7c; }
       .section-head p { margin:7px 0 0; color:#a85d78; }
-      .timer-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+      .timer-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
       .stat { padding:22px 10px; background:#fff; border-radius:24px; text-align:center; box-shadow:0 11px 26px #c65c8021; border:1px solid #ffe6ee; }
       .stat strong { display:block; font:700 clamp(1.7rem,4vw,2.7rem) Mali; color:#ee4a86; }
       .stat span { color:#ad6680; font-size:.87rem; }
@@ -132,7 +132,7 @@
         </section>
         <section id="time">
           <div class="section-head"><h2>เราอยู่ด้วยกันมานานแค่ไหนแล้วนะ</h2><p>ทุกวินาทีที่ผ่านไป คืออีกหนึ่งความทรงจำของเรา ♡</p></div>
-          <div class="timer-grid" aria-label="เวลาที่เราอยู่ด้วยกัน" aria-live="polite"><div class="stat"><strong id="years">0</strong><span>ปี</span></div><div class="stat"><strong id="months">0</strong><span>เดือน</span></div><div class="stat"><strong id="days">0</strong><span>วัน</span></div><div class="stat"><strong id="minutes">0</strong><span>นาที</span></div><div class="stat"><strong id="seconds">0</strong><span>วินาที</span></div></div>
+          <div class="timer-grid" aria-label="เวลาที่เราอยู่ด้วยกัน" aria-live="polite"><div class="stat"><strong id="years">0</strong><span>ปี</span></div><div class="stat"><strong id="months">0</strong><span>เดือน</span></div><div class="stat"><strong id="days">0</strong><span>วัน</span></div><div class="stat"><strong id="hours">0</strong><span>ชั่วโมง</span></div><div class="stat"><strong id="minutes">0</strong><span>นาที</span></div><div class="stat"><strong id="seconds">0</strong><span>วินาที</span></div></div>
         </section>
         <section id="letter">
           <div class="section-head"><h2>จดหมายครบรอบ 11 เดือน</h2><p>ของน้องใบข้าว</p></div>
@@ -191,11 +191,13 @@
         if (milestone > now) { months--; milestone = addMonths(milestone, -1); }
         const remaining = now - milestone;
         const days = Math.floor(remaining / 86400000);
-        const minutes = Math.floor(remaining / 60000) % 1440;
+        const hours = Math.floor(remaining / 3600000) % 24;
+        const minutes = Math.floor(remaining / 60000) % 60;
         const seconds = Math.floor(remaining / 1000) % 60;
         document.querySelector('#years').textContent = years;
         document.querySelector('#months').textContent = months;
         document.querySelector('#days').textContent = days;
+        document.querySelector('#hours').textContent = String(hours).padStart(2, '0');
         document.querySelector('#minutes').textContent = String(minutes).padStart(2, '0');
         document.querySelector('#seconds').textContent = String(seconds).padStart(2, '0');
       }
