@@ -45,7 +45,7 @@
       .section-head { text-align:center; margin-bottom:32px; }
       .section-head h2 { font-size:clamp(1.9rem,4vw,3rem); color:#df3f7c; }
       .section-head p { margin:7px 0 0; color:#a85d78; }
-      .timer-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+      .timer-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
       .stat { padding:22px 10px; background:#fff; border-radius:24px; text-align:center; box-shadow:0 11px 26px #c65c8021; border:1px solid #ffe6ee; }
       .stat strong { display:block; font:700 clamp(1.7rem,4vw,2.7rem) Mali; color:#ee4a86; }
       .stat span { color:#ad6680; font-size:.87rem; }
@@ -131,8 +131,8 @@
           </div>
         </section>
         <section id="time">
-          <div class="section-head"><h2>เราอยู่ด้วยกันมานานแค่ไหนแล้วนะ</h2><p>จาก 11 เดือนเล็ก ๆ กลายเป็นเวลาที่มีความหมายมาก ๆ</p></div>
-          <div class="timer-grid"><div class="stat"><strong>11</strong><span>เดือน</span></div><div class="stat"><strong>335</strong><span>วัน</span></div><div class="stat"><strong>8,040</strong><span>ชั่วโมง</span></div><div class="stat"><strong>28,944,000</strong><span>วินาที</span></div></div>
+          <div class="section-head"><h2>เราอยู่ด้วยกันมานานแค่ไหนแล้วนะ</h2><p>ทุกวินาทีที่ผ่านไป คืออีกหนึ่งความทรงจำของเรา ♡</p></div>
+          <div class="timer-grid" aria-label="เวลาที่เราอยู่ด้วยกัน" aria-live="polite"><div class="stat"><strong id="years">0</strong><span>ปี</span></div><div class="stat"><strong id="months">0</strong><span>เดือน</span></div><div class="stat"><strong id="days">0</strong><span>วัน</span></div><div class="stat"><strong id="minutes">0</strong><span>นาที</span></div><div class="stat"><strong id="seconds">0</strong><span>วินาที</span></div></div>
         </section>
         <section id="letter">
           <div class="section-head"><h2>จดหมายครบรอบ 11 เดือน</h2><p>ของน้องใบข้าว</p></div>
@@ -177,6 +177,30 @@
       document.querySelector('#surpriseBtn').onclick = () => modal.classList.add('show');
       document.querySelector('#closeModal').onclick = () => modal.classList.remove('show');
       modal.onclick = e => { if (e.target === modal) modal.classList.remove('show'); };
+      // เปลี่ยนวันและเวลาเริ่มคบได้ตรงนี้ (รูปแบบ ปี-เดือน-วันTชั่วโมง:นาที)
+      const relationshipStart = new Date('2025-10-06T00:00:00+07:00');
+      function addMonths(date, months) { const next = new Date(date); next.setMonth(next.getMonth() + months); return next; }
+      function updateRelationshipTimer() {
+        const now = new Date();
+        if (now < relationshipStart) return;
+        let years = now.getFullYear() - relationshipStart.getFullYear();
+        let milestone = addMonths(relationshipStart, years * 12);
+        if (milestone > now) { years--; milestone = addMonths(relationshipStart, years * 12); }
+        let months = (now.getFullYear() - milestone.getFullYear()) * 12 + now.getMonth() - milestone.getMonth();
+        milestone = addMonths(milestone, months);
+        if (milestone > now) { months--; milestone = addMonths(milestone, -1); }
+        const remaining = now - milestone;
+        const days = Math.floor(remaining / 86400000);
+        const minutes = Math.floor(remaining / 60000) % 1440;
+        const seconds = Math.floor(remaining / 1000) % 60;
+        document.querySelector('#years').textContent = years;
+        document.querySelector('#months').textContent = months;
+        document.querySelector('#days').textContent = days;
+        document.querySelector('#minutes').textContent = String(minutes).padStart(2, '0');
+        document.querySelector('#seconds').textContent = String(seconds).padStart(2, '0');
+      }
+      updateRelationshipTimer();
+      setInterval(updateRelationshipTimer, 1000);
       const field = document.querySelector('#heartField'), scoreEl = document.querySelector('#score'), prompt = document.querySelector('#gamePrompt');
       let score=0, playing=false, timer;
       function addHeart(){ if(!playing) return; const h=document.createElement('button'); h.className='heart'; h.textContent=['💗','💖','💕','💓'][Math.floor(Math.random()*4)]; h.style.left=Math.random()*82+5+'%'; h.style.top=Math.random()*75+7+'%'; h.onclick=()=>{ score++; scoreEl.textContent='หัวใจที่เก็บได้: '+score; h.remove(); addHeart(); }; field.append(h); setTimeout(()=>{h.remove();},1200); }
@@ -184,10 +208,10 @@
       const garden=document.querySelector('#garden'), gardenNote=document.querySelector('#gardenNote'); let flower='🌷', planted=0;
       for(let i=0;i<20;i++){ const plot=document.createElement('button'); plot.className='plot'; plot.setAttribute('aria-label','แปลงดอกไม้'); plot.onclick=()=>{ if(!plot.textContent){ plot.textContent=flower; planted++; gardenNote.textContent=planted<12 ? 'สวนของเรามี '+planted+' ดอกแล้วน้าา 🌿' : 'สวนของเราบานเต็มเลยย! ใบข้าวเก่งที่สุด 💗'; } else { plot.textContent=flower; } }; garden.append(plot); }
       document.querySelectorAll('.flower-pick').forEach(btn=>btn.onclick=()=>{ document.querySelectorAll('.flower-pick').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); flower=btn.dataset.flower; gardenNote.textContent='เลือก '+btn.textContent+' แล้ว ลองปลูกเลยย'; });
-      const dates=['คาเฟ่แมว 🐈','ฮาร์เบอร์แลนด์ 🛝','อควาเรียม 🐠','สวนสาธารณะปิกนิก 🌳','พิพิธภัณฑ์ศิลปะ 🎨','ตลาดกลางคืน 🌙','ดูหนังโรง 🍿','คาราโอเกะ 🎤','โบว์ลิ่ง 🎳','สเก็ตน้ำแข็ง ⛸️','สวนสัตว์ 🦁','สวนสนุก 🎢','ห้องสมุดน่ารัก ๆ 📚','เดินถ่ายรูปย่านเก่า 📷','คาเฟ่บอร์ดเกม 🎲','ชายหาดตอนเย็น 🌊','ดูดาวท้องฟ้าจำลอง 🌌','เวิร์กช็อปปั้นดิน 🏺','ร้านหนังสือ ☕','คอนเสิร์ตเล็ก ๆ 🎶']; let spinning=false, wheelAngle=0;
+      const dates=['คาเฟ่แมว 🐈','ฮาร์เบอร์แลนด์ 🛝','อควาเรียม 🐠','สวนสาธารณะปิกนิก 🌳','พิพิธภัณฑ์ศิลปะ 🎨','ตลาดกลางคืน 🌙','ดูหนังโรง 🍿','คาราโอเกะ 🎤','โบว์ลิ่ง 🎳','สเก็ตน้ำแข็ง ⛸️','สวนสัตว์ 🦁','สวนสนุก 🎢','ห้องสมุดน่ารัก ๆ 📚','เดินถ่ายรูปย่านเก่า 📷','คาเฟ่บอร์ดเกม 🎲','ชายหาดตอนเย็น 🌊','ดูดาวท้องฟ้าจำลอง 🌌','เวิร์กช็อปปั้นดิน 🏺','ร้านหนังสือ ☕','คอนเสิร์ตเล็ก ๆ 🎶','นั่งรถไฟไปเที่ยวใกล้ ๆ 🚆','ตลาดนัดมือสอง 🧺','คาเฟ่ดอกไม้ 🌷','พิพิธภัณฑ์สัตว์น้ำกลางคืน ✨','ทริปหนึ่งวันต่างจังหวัด 🚗','สวนพฤกษศาสตร์ 🌿','ล่องเรือชมวิว 🛥️','ย่านของอร่อยใหม่ ๆ 🥢','เดินเล่นริมแม่น้ำ 🌉','ดูนิทรรศการใหม่ 🖼️']; let spinning=false, wheelAngle=0;
       document.querySelector('#spinWheel').onclick=()=>{ if(spinning) return; spinning=true; const selected=Math.floor(Math.random()*dates.length); wheelAngle+=1440+(6-selected)*60; document.querySelector('#wheel').style.transform='rotate('+wheelAngle+'deg)'; document.querySelector('#dateResult').textContent='กำลังเลือกเดตที่น่ารักที่สุด...'; setTimeout(()=>{document.querySelector('#dateResult').textContent='เดตครั้งหน้า: '+dates[selected]+' กับไอซ์นะครับ ♡';spinning=false;},3250); };
-      const food=['ชาบู 🍲','หมูกระทะ 🥓','ซูชิ 🍣','ราเมง 🍜','พิซซ่า 🍕','กะเพราไข่ดาว 🍳','ไก่ทอดเกาหลี 🍗','ส้มตำ 🌶️','ก๋วยเตี๋ยวเรือ 🍜','ข้าวมันไก่ 🍚','สเต๊ก 🥩','พาสต้า 🍝','ต๊อกบกกี 🥘','เบอร์เกอร์ 🍔','ขนมจีน 🍛','ข้าวแกง 🍱','โยเกิร์ตสตรอเบอร์รี่ 🍓','บิงซู 🍧','เครป 🥞','ชาไข่มุก 🧋'];
-      const activities=['ถ่ายรูปคู่ตามโจทย์ 10 รูป 📸','แข่งกันเลือกขนมให้อีกคน 🍰','ทำเพลย์ลิสต์ให้กัน 🎧','เขียนจดหมายสั้น ๆ 💌','แข่งวาดรูปกัน 5 นาที 🎨','เล่นบอร์ดเกม 🎲','ทำอาหารด้วยกัน 👩‍🍳','ตามล่าของสีเดียวกัน 🔍','ทำกล่องความทรงจำ 📦','ถ่ายตู้สติกเกอร์ 📷','เลือกหนังให้กันดู 🎬','เดินจับมือ 30 นาที 🚶','เล่นเกมตอบคำถามแฟน 💞','ลองเมนูที่ไม่เคยกิน 😋','ทำขนมด้วยกัน 🧁','ตั้งเป้าหมายเดือนหน้า 🗓️','ดูพระอาทิตย์ตก 🌅','ร้องเพลงคู่ 🎤','เลือกของขวัญงบ 100 บาท 🎁','นวดไหล่ให้กัน 10 นาที 💆'];
+      const food=['ชาบู 🍲','หมูกระทะ 🥓','ซูชิ 🍣','ราเมง 🍜','พิซซ่า 🍕','กะเพราไข่ดาว 🍳','ไก่ทอดเกาหลี 🍗','ส้มตำ 🌶️','ก๋วยเตี๋ยวเรือ 🍜','ข้าวมันไก่ 🍚','สเต๊ก 🥩','พาสต้า 🍝','ต๊อกบกกี 🥘','เบอร์เกอร์ 🍔','ขนมจีน 🍛','ข้าวแกง 🍱','โยเกิร์ตสตรอเบอร์รี่ 🍓','บิงซู 🍧','เครป 🥞','ชาไข่มุก 🧋','ข้าวหน้าเนื้อ 🥩','ยำแซ่บ ๆ 🥗','ข้าวซอย 🍛','ติ่มซำ 🥟','ขนมปังปิ้ง 🥪','ไอศกรีมเจลาโต 🍨','ปิ้งย่างเกาหลี 🥓','อาหารเวียดนาม 🥬','ข้าวแกงกะหรี่ 🍛','ผลไม้เย็น ๆ 🍉'];
+      const activities=['ถ่ายรูปคู่ตามโจทย์ 10 รูป 📸','แข่งกันเลือกขนมให้อีกคน 🍰','ทำเพลย์ลิสต์ให้กัน 🎧','เขียนจดหมายสั้น ๆ 💌','แข่งวาดรูปกัน 5 นาที 🎨','เล่นบอร์ดเกม 🎲','ทำอาหารด้วยกัน 👩‍🍳','ตามล่าของสีเดียวกัน 🔍','ทำกล่องความทรงจำ 📦','ถ่ายตู้สติกเกอร์ 📷','เลือกหนังให้กันดู 🎬','เดินจับมือ 30 นาที 🚶','เล่นเกมตอบคำถามแฟน 💞','ลองเมนูที่ไม่เคยกิน 😋','ทำขนมด้วยกัน 🧁','ตั้งเป้าหมายเดือนหน้า 🗓️','ดูพระอาทิตย์ตก 🌅','ร้องเพลงคู่ 🎤','เลือกของขวัญงบ 100 บาท 🎁','นวดไหล่ให้กัน 10 นาที 💆','ถ่ายวิดีโอหนึ่งวันของเรา 🎥','ชวนกันอ่านหนังสือ 30 นาที 📖','ทำแคปซูลเวลาส่งถึงอนาคต ⏳','เล่นเกมมือถือทีมเดียวกัน 🎮','แต่งตัวธีมสีเดียวกัน 👕','ไปเดินเลือกรูปใส่อัลบั้ม 🖼️','ทายเพลงจากอินโทร 🎶','เขียน 3 เรื่องที่ชอบในกันและกัน ✍️','ลองทำเครื่องดื่มสูตรใหม่ 🥤','นัดคืนไร้โทรศัพท์ 1 ชั่วโมง 🌙'];
       function makeWheel(buttonId,wheelId,resultId,items,label){let angle=0,busy=false;document.querySelector('#'+buttonId).onclick=()=>{if(busy)return;busy=true;const pick=items[Math.floor(Math.random()*items.length)];angle+=1440+Math.floor(Math.random()*360);document.querySelector('#'+wheelId).style.transform='rotate('+angle+'deg)';document.querySelector('#'+resultId).textContent='กำลังสุ่ม...';setTimeout(()=>{document.querySelector('#'+resultId).textContent=label+pick+' ♡';busy=false;},3250);};}
       makeWheel('spinTrip','tripWheel','tripResult',dates,'เดตครั้งหน้า: '); makeWheel('spinFood','foodWheel','foodResult',food,'วันนี้กิน: '); makeWheel('spinActivity','activityWheel','activityResult',activities,'วันนี้เรามา: ');
       const sheetEndpoint='https://script.google.com/macros/s/AKfycbwas5a3KbS5I6RMvOdoi4eUOIbrbP_X-P7WLbPJJ7R4YXGIIgK5Vazpnc4z_h9of1Rv/exec';
